@@ -9,7 +9,7 @@ import java.net.*;
 import java.util.*;
 
 
-// MAIN PAGE
+
 
 public class first_page {
 
