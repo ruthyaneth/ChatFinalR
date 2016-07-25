@@ -74,7 +74,8 @@ public class first_page {
 			  {
 				  try {
 					  frame.dispose();
-						ServerTest();						 
+						abrirLaventana de chatRoomClient//
+					  
 				
 				  } catch (Exception e1) {
 					
@@ -93,13 +94,13 @@ public class first_page {
 		
 	}
 
-	protected void ServerTest() {
-		
-		Server applicationS = new Server(); // create server
-		 applicationS.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		 applicationS.waitForPackets(); // run server application
-		 applicationS.setVisible(true);
-	}
+//	protected void ServerTest() {
+//		
+//		Server applicationS = new Server(); // create server
+//		 applicationS.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+//		 applicationS.waitForPackets(); // run server application
+//		 applicationS.setVisible(true);
+//	}
 
 	/*
 	 * Generate Captcha
