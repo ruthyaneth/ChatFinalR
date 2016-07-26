@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Chat Cantidad-Clientes="1">
+    <Cliente>
+        <id>7</id>
+        <nombre/>
+        <Apellido/>
+        <NickName/>
+        <contrasena/>
+        <email/>
+    </Cliente>
+</Chat>
