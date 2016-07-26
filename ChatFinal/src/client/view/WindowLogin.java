@@ -45,7 +45,7 @@ public class WindowLogin extends JDialog implements MouseListener {
 	private JButton buttonIconEntry;
 	private JButton buttonIconExit;
 	private Controller controller;
-	
+	private WindowRegister windowRegister;
 	
 	
 	//------Builder-----
@@ -53,6 +53,7 @@ public class WindowLogin extends JDialog implements MouseListener {
 	public WindowLogin(Controller controller) {
 		
 		init(controller);
+		windowRegister = new WindowRegister(controller);
 	}
 	
 	//------Methods------
@@ -76,8 +77,7 @@ public class WindowLogin extends JDialog implements MouseListener {
 		this.setLayout(null);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setResizable(false);
-		this.setVisible(true);	
-		
+//		this.setVisible(true);	
 	}
 		
 	public void intiLabel(){
@@ -105,7 +105,6 @@ public class WindowLogin extends JDialog implements MouseListener {
 		this.labelRecuper.setForeground(new Color(255, 51, 0));
 		this.labelRecuper.setBounds(133, 191, 232, 14);
 		this.add(labelRecuper);
-	
 	}
 		
 		public void initTx(){
@@ -113,14 +112,11 @@ public class WindowLogin extends JDialog implements MouseListener {
 			this.textField = new JTextField();
 			this.textField.setBounds(169, 50, 149, 28);
 			this.add(textField);
-			
-			
 			this.passwordField = new JPasswordField();
 			this.passwordField.setBounds(169, 116, 149, 28);
 			this.add(passwordField);
 			
 		}
-		
 		
 		public void initButton(Controller controller){
 			
@@ -140,37 +136,27 @@ public class WindowLogin extends JDialog implements MouseListener {
 		
 		@Override
 		public void mouseClicked(MouseEvent event) {
-			this.controller = new Controller();
+//			this.controller = new Controller();
 			if(event.getSource() == lblRegistrarse){
-				WindowRegister register = new WindowRegister(controller);
-				register.setVisible(true);
+				windowRegister.setVisible(true);
 				this.setVisible(false);
 			}
-			
 		}
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			
-			
 		}
 
 		@Override
 		public void mouseExited(MouseEvent e) {
-			
-			
 		}
 
 		@Override
 		public void mousePressed(MouseEvent e) {
-		
-			
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			
-			
 		}
 
 		//-------SettersAndGetters------
@@ -192,7 +178,8 @@ public class WindowLogin extends JDialog implements MouseListener {
 			this.passwordField = passwordField;
 		}
 
-	
-		
+		public WindowRegister getWindowRegister() {
+			return windowRegister;
+		}
 		
 }

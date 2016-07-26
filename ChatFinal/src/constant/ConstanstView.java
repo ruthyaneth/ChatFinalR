@@ -27,13 +27,13 @@ public class ConstanstView {
 	public final static String DEFAULT_SERVER_COMMAND = "Comando Servidor";
 	
 	
-	public final static String DEFAULT_NAME_WINDOW_LOGIN = "Registro De Ingreso";
-	public final static String DEFAULT_LABEL_NAME = "Nombre";
-	public final static String DEFAULT_LABEL_USERNAME = "Apellido";
-	public final static String DEFAULT_LABEL_NOCKNAME = "Usuario";
+	public final static String DEFAULT_NAME_WINDOW_LOGIN = "DEFAULT_NAME_WINDOW_LOGIN";
+	public final static String DEFAULT_LABEL_NAME = "DEFAULT_LABEL_NAME";
+	public final static String DEFAULT_LABEL_USERNAME = "DEFAULT_LABEL_USERNAME";
+	public final static String DEFAULT_LABEL_NOCKNAME = "DEFAULT_LABEL_NOCKNAME";
 	public final static String DEFAULT_LABEL_EMAIL = "Correo Electronico";
-	public final static String DEFAULT_LABEL_PASSWORD = "Contraseña";
-	public final static String DEFAULT_LABEL_PASSWORD_CON = "Conformar Contrase�a";
+	public final static String DEFAULT_LABEL_PASSWORD = "DEFAULT_LABEL_PASSWORD";
+	public final static String DEFAULT_LABEL_PASSWORD_CON = "CDEFAULT_LABEL_PASSWORD_CON";
 	public final static String DEFAULT_LABEL_CARACTER = "Caracteres";
 	public final static String DEFAULT_BUTTON_REGISTER ="Registrar";
 	public final static String DEFAULT_BUTTON_CANCEL = "Cancelar";
@@ -126,7 +126,7 @@ public class ConstanstView {
 	/**
 	 * Cnstantes de panel de lista de usuarios 
 	 */
-	public final static String DEFAULT_ONLINE = "En Linea";
-	
+	public final static String DEFAULT_ONLINE = "En Linea";		
+	public static final String A_BUTTON_REGISTER_OK = "A_BUTTON_REGISTER_OK ";
 	
 }

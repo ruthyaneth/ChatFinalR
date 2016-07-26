@@ -22,8 +22,8 @@ public class WindowServer  extends JFrame {
 	//-----Builder------
 	public WindowServer() {
 		init();
-
 	}
+	
 	//------Methods ------
 
 	public void init(){

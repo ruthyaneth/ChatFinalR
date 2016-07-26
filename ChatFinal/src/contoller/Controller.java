@@ -2,11 +2,15 @@ package contoller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
+import client.logic.ManagerUser;
+import client.logic.User;
 import client.view.WindowClient;
 import client.view.WindowLogin;
-import client.view.WindowRegister;
+import config.HandlerLanguage;
 import constant.ConstantController;
+import persistence.XmlCliente;
 
 /**
  * UNIVERSIDAD PEDAGOGICA Y TECNOLOGICA DE COLOMBIA
@@ -14,31 +18,37 @@ import constant.ConstantController;
  * ESCUELA DE INGENIERIA DE SISTEMAS Y COMPUTACION 
  * PRESENTADO A : ING HELVER VALERO.
  * PROGRAMACION III-
- * Clase del controlador de eeventos de los botones
+ * Clase del controlador de eventos de los botones
  * @author Jenny Quesada , Ruth Rojas
  * 																																																						
  */
 public class Controller implements ActionListener{
-
+	
+	public static final String RUTA_CLIENTE = "src/data/arrayClientes.xml";
+	private HandlerLanguage handlerLanguage;
 	//------Atributtes------
 	private WindowClient windowClient;
 	private WindowLogin windowLogin;
-	private WindowRegister windowRegister;
+//	private WindowRegister windowRegister;
+	private ManagerUser managerUser;
 	
 	//-----Builder------
 	public Controller() {
+		loadConfiguration();
+//		windowRegister = new WindowRegister(this);
+		this.windowLogin = new WindowLogin(this);
+		managerUser = new ManagerUser();
 	}
 	
 	//-----Methods-----
 	
 	public void showWindowClient(){
 		
-		this.windowClient = new WindowClient();
+		this.windowClient = new WindowClient(this);
 		this.windowClient.setVisible(true);
 	}
 	
 	public void showWindowLogin(){
-		this.windowLogin = new WindowLogin(this);
 		this.windowLogin.setVisible(true);
 
 		
@@ -47,18 +57,82 @@ public class Controller implements ActionListener{
 	public void closeWindowRegister(){
 		
 	}
+	public void loadConfiguration() {
+		if (handlerLanguage == null) {
+			handlerLanguage = new HandlerLanguage("language/config.ini");
+			try {
+				handlerLanguage.loadLanguage();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			System.out.println(HandlerLanguage.language);
+		}
+	}
 	
+	public void changeToEnglish() {
+		HandlerLanguage handlerLanguage = new HandlerLanguage("language/config.ini");
+		try {
+			handlerLanguage.language = "language/languageUs.properties";
+			handlerLanguage.setLanguage();
+			windowLogin.getWindowRegister().changeLenguage();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void changeToSpanish() {
+		HandlerLanguage handlerLanguage = new HandlerLanguage("language/config.ini");
+		try {
+			handlerLanguage.language = "language/languageEs.properties";
+			handlerLanguage.setLanguage();
+			windowLogin.getWindowRegister().changeLenguage();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		
-		if(event.getActionCommand().equals(ConstantController.DEFAULT_WINDOW_CLIENT)){
+		switch (event.getActionCommand()) {
+		case ConstantController.DEFAULT_WINDOW_CLIENT: 
 			showWindowClient();
-		}else if(event.getActionCommand().equals(ConstantController.DEFAULT_WINDOW_BACK)){
+			break;
+		case ConstantController.DEFAULT_WINDOW_BACK:
 			showWindowLogin();
-		
+			break;
+		case ConstantController.A_BUTTON_REGISTER_OK:
+			System.out.println("escucho");
+			addUser();
+			System.out.println("SALIO EXITOSAMENTE");
+			break;
+		case ConstantController.A_ITEM_ENGLISH:
+			System.out.println("ingles");
+			changeToEnglish();
+			break;
+		case ConstantController.A_ITEM_SPANISH:
+			System.out.println("español");
+			changeToSpanish();
+		default:
+			break;
 		}
+//		if(event.getActionCommand().equals(ConstantController.DEFAULT_WINDOW_CLIENT)){
+//			showWindowClient();
+//		}else if(event.getActionCommand().equals(ConstantController.DEFAULT_WINDOW_BACK)){
+//			showWindowLogin();
+//		
+//		}
 		
 	}
 	
-
+	public void addUser(){
+		User cliente = windowLogin.getWindowRegister().createUser();
+		if (cliente != null){
+			managerUser.addUser(cliente);
+//			ventanaPrincipal.agregarCliente(cliente);
+			XmlCliente.EscribirXML(managerUser.getListUser(), RUTA_CLIENTE);
+		}
+	}
 }
