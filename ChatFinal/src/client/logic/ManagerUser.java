@@ -9,14 +9,14 @@ public class ManagerUser {
 	public ManagerUser() {
 		listUser = new ArrayList<User>();
 	}
+	public static User createUser(String nombre, String apellido, String nickName, String passWord, String email){
+		return new User(nombre, apellido, nickName,passWord, email);
+	}
 	
 	public void addUser(User user){
 		listUser.add(user);
 	}
 	
-	public static User createUser(String nombre, String apellido, String nickName, String passWord, String email){
-			return new User(nombre, apellido, nickName,passWord, email);
-	}
 
 	public ArrayList<User> getListUser() {
 		return listUser;

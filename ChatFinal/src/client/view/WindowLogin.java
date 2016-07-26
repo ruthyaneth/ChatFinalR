@@ -39,11 +39,17 @@ public class WindowLogin extends JDialog implements MouseListener {
 	private JLabel jLabelRecuper;
 	private JButton buttonIconEntry;
 	private JButton buttonIconExit;
-	private Controller controller;
+	private static Controller controller;
 	private WindowRegister windowRegister;
+	public static WindowLogin windowLogin = null;
 
 	// ------Builder-----
 
+	public WindowLogin(Controller controller, WindowRegister windowRegister) {
+
+		init(controller);
+		windowRegister = new WindowRegister(controller);
+	}
 	public WindowLogin(Controller controller) {
 
 		init(controller);
@@ -52,6 +58,12 @@ public class WindowLogin extends JDialog implements MouseListener {
 
 	// ------Methods------
 
+	public static WindowLogin getInstance() {
+		if (windowLogin == null) {
+			windowLogin = new WindowLogin(controller);
+		}
+		return windowLogin;
+	}
 	public void init(Controller controller) {
 		initThis();
 		intiLabel();
@@ -76,7 +88,6 @@ public class WindowLogin extends JDialog implements MouseListener {
 		this.setLayout(null);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setResizable(false);
-		// this.setVisible(true);
 	}
 
 	public void intiLabel() {

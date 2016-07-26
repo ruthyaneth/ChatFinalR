@@ -8,6 +8,7 @@ import client.logic.ManagerUser;
 import client.logic.User;
 import client.view.WindowClient;
 import client.view.WindowLogin;
+import client.view.WindowRegister;
 import config.HandlerLanguage;
 import constant.ConstantController;
 import persistence.XmlUser;
@@ -27,14 +28,14 @@ public class Controller implements ActionListener {
 	// ------Atributtes------
 	private WindowClient windowClient;
 	private WindowLogin windowLogin;
-	// private WindowRegister windowRegister;
+	 private WindowRegister windowRegister;
 	private ManagerUser managerUser;
 
 	// -----Builder------
 	public Controller() {
 		loadConfiguration();
-		// windowRegister = new WindowRegister(this);
-		this.windowLogin = new WindowLogin(this);
+		this.windowLogin = new WindowLogin(this,windowRegister);
+		this.windowRegister = new WindowRegister(this);
 		managerUser = new ManagerUser();
 	}
 
@@ -44,11 +45,6 @@ public class Controller implements ActionListener {
 
 		this.windowClient = new WindowClient(this);
 		this.windowClient.setVisible(true);
-	}
-
-	public void showWindowLogin() {
-		this.windowLogin.setVisible(true);
-
 	}
 
 	public void closeWindowRegister() {
@@ -101,7 +97,7 @@ public class Controller implements ActionListener {
 			showWindowClient();
 			break;
 		case ConstantController.DEFAULT_WINDOW_BACK:
-			showWindowLogin();
+			this.windowLogin.setVisible(true);
 			break;
 		case ConstantController.A_BUTTON_REGISTER_OK:
 			System.out.println("escucho");
@@ -116,22 +112,19 @@ public class Controller implements ActionListener {
 		default:
 			break;
 		}
-		// if(event.getActionCommand().equals(ConstantController.DEFAULT_WINDOW_CLIENT)){
-		// showWindowClient();
-		// }else
-		// if(event.getActionCommand().equals(ConstantController.DEFAULT_WINDOW_BACK)){
-		// showWindowLogin();
-		//
-		// }
-
 	}
 
 	public void addUser() {
-		User cliente = windowLogin.getWindowRegister().createUser();
+		System.out.println(windowRegister.getjTextFieldName().getText());
+		User cliente = ManagerUser.createUser(windowRegister.getjTextFieldName().getText(),
+				windowRegister.getjTextFielLastName().getText(),
+				windowRegister.getjTextFieldNickName().getText(),
+				windowRegister.getjPasswordFiel().getText(),
+				windowRegister.getjTextFielEmail().getText());
+//		 User cliente = windowLogin.getWindowRegister().createUserG();
 		if (cliente != null) {
 			managerUser.addUser(cliente);
 			// ventanaPrincipal.agregarCliente(cliente);
-
 			XmlUser.EscribirXML(managerUser.getListUser(), RUTA_CLIENTE);
 		}
 	}

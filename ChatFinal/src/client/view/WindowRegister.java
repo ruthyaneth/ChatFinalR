@@ -28,6 +28,7 @@ import contoller.Controller;
 public class WindowRegister extends JDialog {
 
 	private static final long serialVersionUID = 1L;
+	public static WindowRegister windowRegister = null;
 	
 	// ------Atributtes------
 	private JTextField jTextFieldNickName;
@@ -48,23 +49,23 @@ public class WindowRegister extends JDialog {
 	private JButton jButtonCancel;
 	private JLabel labelIcon;
 	private JLabel jLabelCaptcha;
-	private Controller controller;
 	private JButton jButtonOkCaptcha;
+	private  Controller controller;
 
 	// ------Builder-------
 
-	public WindowRegister(final Controller controller) {
-
-		init(controller);
-	}
-
-	// -------Methods--------
-
-	public void init(Controller controller) {
-		initThis();
+	public WindowRegister(Controller controller) {
+		
+		this.controller = controller;
+		this.setSize(ConstanstView.DEFAUL_SIZE_W, ConstanstView.DEFAULT_SIZ_H);
+		this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		this.setResizable(false);
+		this.setLayout(null);
+		this.setLocationRelativeTo(null);
+		
 		initLabel();
-		initTx();
-		initButton(controller);
+		initJTextField();
+		initButton();
 		addJButtonOkCaptcha();
 		try {
 			changeLenguage();
@@ -73,15 +74,7 @@ public class WindowRegister extends JDialog {
 		}
 	}
 
-	public void initThis() {
-
-		this.setSize(ConstanstView.DEFAUL_SIZE_W, ConstanstView.DEFAULT_SIZ_H);
-		this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		this.setResizable(false);
-		this.setLayout(null);
-		this.setLocationRelativeTo(null);
-
-	}
+	// -------Methods--------
 
 	public void addJButtonOkCaptcha() {
 		this.jButtonOkCaptcha = new JButton("Ok");
@@ -99,7 +92,17 @@ public class WindowRegister extends JDialog {
 		});
 		this.add(jButtonOkCaptcha);
 	}
-
+	public User createUserG(){
+		
+		char[] arrayC = jPasswordFiel.getPassword(); 
+		String pass = new String(arrayC); 
+		System.out.println(jTextFieldName.getText()+ "--->");
+		User cliente = ManagerUser.createUser(jTextFieldName.getText(), jTextFielLastName.getText(), jTextFieldNickName.getText(), pass, jTextFielEmail.getText());
+		dispose();
+		eliminarDatosTableCliente();
+		return cliente;
+		
+	}
 	public void initLabel() {
 
 		this.jLabelName = new JLabel();
@@ -154,7 +157,7 @@ public class WindowRegister extends JDialog {
 		this.add(jLabelCaptcha);
 	}
 
-	public void initTx() {
+	public void initJTextField() {
 
 		this.jTextFieldNickName = new JTextField();
 		this.jTextFieldNickName.setBounds(239, 248, 180, 28);
@@ -183,10 +186,9 @@ public class WindowRegister extends JDialog {
 		this.jTextFielEmail = new JTextField();
 		this.jTextFielEmail.setBounds(239, 365, 180, 28);
 		this.add(jTextFielEmail);
-
 	}
 
-	public void initButton(Controller controller) {
+	public void initButton() {
 
 		this.jButtonRegister = new JButton();
 		this.jButtonRegister.setFont(new Font(ConstanstView.DEFAULT_FONT, Font.BOLD, 12));
@@ -224,15 +226,7 @@ public class WindowRegister extends JDialog {
 		return captchaStringBuffer.toString();
 		
 	}
-	public User createUser(){
-		char[] arrayC = jPasswordFiel.getPassword(); 
-		String pass = new String(arrayC); 
-		User cliente = ManagerUser.createUser(jTextFieldName.getText(), jTextFielLastName.getText(), jTextFieldNickName.getText(), pass, jTextFielEmail.getText());
-		System.out.println(jTextFieldName.getText()+ "--->");
-		dispose();
-//		eliminarDatosTableCliente();
-		return cliente;
-	}
+	
 
 	// ------Gets&&Sets-------
 
@@ -261,34 +255,89 @@ public class WindowRegister extends JDialog {
 		this.jButtonCancel.setText(handlerProperties.getProperty(ConstanstView.DEFAULT_BUTTON_CANCEL));
 	}
 
-	public JTextField getTxNickName() {
+	
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public static WindowRegister getWindowRegister() {
+		return windowRegister;
+	}
+
+	public JTextField getjTextFieldNickName() {
 		return jTextFieldNickName;
 	}
 
-	public void setTxNickName(JTextField txNickName) {
-		this.jTextFieldNickName = txNickName;
-	}
-
-	public JTextField getTxName() {
+	public JTextField getjTextFieldName() {
 		return jTextFieldName;
 	}
 
-	public void setTxName(JTextField txName) {
-		this.jTextFieldName = txName;
-	}
-
-	public JTextField getTxUserName() {
+	public JTextField getjTextFielLastName() {
 		return jTextFielLastName;
 	}
 
-	public void setTxUserName(JTextField txUserName) {
-		this.jTextFielLastName = txUserName;
-	}
-
-	public JPasswordField getTxPassword() {
+	public JPasswordField getjPasswordFiel() {
 		return jPasswordFiel;
 	}
 
+	public JPasswordField getjPasswordFielConfirmPassword() {
+		return jPasswordFielConfirmPassword;
+	}
+
+	public JLabel getjLabelName() {
+		return jLabelName;
+	}
+
+	public JLabel getjLabelLastName() {
+		return jLabelLastName;
+	}
+
+	public JLabel getjLabelNickname() {
+		return jLabelNickname;
+	}
+
+	public JLabel getjLabelPassword() {
+		return jLabelPassword;
+	}
+
+	public JLabel getjLabelConfirmPassword() {
+		return jLabelConfirmPassword;
+	}
+
+	public JLabel getjLabelDigitCaptha() {
+		return jLabelDigitCaptha;
+	}
+
+	public JTextField getjTextFielReDigitCaptcha() {
+		return jTextFielReDigitCaptcha;
+	}
+
+	public JLabel getjLabelEmail() {
+		return jLabelEmail;
+	}
+
+	public JTextField getjTextFielEmail() {
+		return jTextFielEmail;
+	}
+
+	public JButton getjButtonRegister() {
+		return jButtonRegister;
+	}
+
+	public JButton getjButtonCancel() {
+		return jButtonCancel;
+	}
+
+	public JLabel getjLabelCaptcha() {
+		return jLabelCaptcha;
+	}
+
+	public JButton getjButtonOkCaptcha() {
+		return jButtonOkCaptcha;
+	}
+
+	
 	public void setTxPassword(JPasswordField txPassword) {
 		this.jPasswordFiel = txPassword;
 	}
