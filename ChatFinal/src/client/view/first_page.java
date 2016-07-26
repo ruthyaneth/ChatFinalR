@@ -74,7 +74,7 @@ public class first_page {
 			  {
 				  try {
 					  frame.dispose();
-						abrirLaventana de chatRoomClient//
+//						abrirLaventana de chatRoomClient//
 					  
 				
 				  } catch (Exception e1) {
