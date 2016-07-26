@@ -59,6 +59,10 @@ public class WindowClient extends JFrame {
 		this.setVisible(true);
 		PreferencesControl.loadProperties();
 	}
+
+	public Menu getMenu() {
+		return menu;
+	}
 	
 	
 }

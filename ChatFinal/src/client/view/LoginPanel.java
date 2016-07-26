@@ -2,10 +2,13 @@ package client.view;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 import javax.swing.border.*;
 
+import config.HandlerLanguage;
+import config.HandlerProperties;
 import constant.ConstanstView;
 import control.ChatSocketControl;
 
@@ -22,8 +25,8 @@ public class LoginPanel extends JPanel {
 	
 	//-----Atribttes------
 	private static LoginPanel singleton = null;
-	private JTextField port;
-	private JTextField host;
+	private JTextField jTextFielPort;
+	private JTextField jTextFieldhost;
 	private JTextField user;
 	private JToggleButton optionConection;
 
@@ -45,8 +48,8 @@ public class LoginPanel extends JPanel {
 	}
 	
 	public void initComponent(){
-		host = new JTextField(15);
-		port = new JTextField(15);
+		jTextFieldhost = new JTextField(15);
+		jTextFielPort = new JTextField(15);
 		user = new JTextField(15);
 		optionConection = new JToggleButton(ConstanstView.NAME_TO_BUTTON);
 		
@@ -57,7 +60,7 @@ public class LoginPanel extends JPanel {
 					
 
 						try {
-							ChatSocketControl.getInstance().openSocket(Integer.parseInt(port.getText()),host.getText(),
+							ChatSocketControl.getInstance().openSocket(Integer.parseInt(jTextFielPort.getText()),jTextFieldhost.getText(),
 									new String(user.getText().getBytes(),
 											"UTF-8"));
 						} catch (NumberFormatException | UnsupportedEncodingException e1) {
@@ -74,10 +77,10 @@ public class LoginPanel extends JPanel {
 		JLabel showlabel;
 		showlabel = new JLabel(ConstanstView.NAME_IP);
 		this.add(showlabel);
-		this.add(host);
+		this.add(jTextFieldhost);
 		showlabel = new JLabel(ConstanstView.NAME_PORT);
 		this.add(showlabel);
-		this.add(port);
+		this.add(jTextFielPort);
 		showlabel = new JLabel(ConstanstView.NAME_USER);
 		this.add(showlabel);
 		this.add(user);
@@ -92,19 +95,24 @@ public class LoginPanel extends JPanel {
 	}
 
 	public void lock() {
-		port.setEnabled(false);
-		host.setEnabled(false);
+		jTextFielPort.setEnabled(false);
+		jTextFieldhost.setEnabled(false);
 		user.setEnabled(false);
 		optionConection.setSelected(true);
 		optionConection.setText(ConstanstView.NAME_TO_BUTTOND);
 	}
 
 	public void unlock() {
-		port.setEnabled(true);
-		host.setEnabled(true);
+		jTextFielPort.setEnabled(true);
+		jTextFieldhost.setEnabled(true);
 		user.setEnabled(true);
 		optionConection.setSelected(false);
 		optionConection.setText(ConstanstView.NAME_TO_BUTTON);
+	}
+	public void changeLenguage() throws IOException {
+
+		HandlerProperties handlerProperties = new HandlerProperties(HandlerLanguage.language);
+		handlerProperties.load();
 	}
 	
 	public String getUserName() {

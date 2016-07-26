@@ -44,8 +44,8 @@ public class WindowRegister extends JDialog {
 	private JTextField jTextFielReDigitCaptcha;
 	private JLabel jLabelEmail;
 	private JTextField jTextFielEmail;
-	private JButton buttonRegister;
-	private JButton buttonCancel;
+	private JButton jButtonRegister;
+	private JButton jButtonCancel;
 	private JLabel labelIcon;
 	private JLabel jLabelCaptcha;
 	private Controller controller;
@@ -188,19 +188,19 @@ public class WindowRegister extends JDialog {
 
 	public void initButton(Controller controller) {
 
-		this.buttonRegister = new JButton(ConstanstView.DEFAULT_BUTTON_REGISTER);
-		this.buttonRegister.setFont(new Font(ConstanstView.DEFAULT_FONT, Font.BOLD, 12));
-		this.buttonRegister.setBounds(123, 595, 110, 23);
-		this.buttonRegister.setActionCommand(ConstantController.A_BUTTON_REGISTER_OK);
-		this.buttonRegister.addActionListener(controller);
-		this.add(buttonRegister);
+		this.jButtonRegister = new JButton();
+		this.jButtonRegister.setFont(new Font(ConstanstView.DEFAULT_FONT, Font.BOLD, 12));
+		this.jButtonRegister.setBounds(123, 595, 110, 23);
+		this.jButtonRegister.setActionCommand(ConstantController.A_BUTTON_REGISTER_OK);
+		this.jButtonRegister.addActionListener(controller);
+		this.add(jButtonRegister);
 
-		this.buttonCancel = new JButton(ConstanstView.DEFAULT_BUTTON_CANCEL);
-		this.buttonCancel.setFont(new Font(ConstanstView.DEFAULT_FONT, Font.BOLD, 12));
-		this.buttonCancel.setBounds(275, 595, 107, 23);
-		this.buttonCancel.setActionCommand(ConstantController.DEFAULT_WINDOW_BACK);
-		this.buttonCancel.addActionListener(controller);
-		this.add(buttonCancel);
+		this.jButtonCancel = new JButton();
+		this.jButtonCancel.setFont(new Font(ConstanstView.DEFAULT_FONT, Font.BOLD, 12));
+		this.jButtonCancel.setBounds(275, 595, 107, 23);
+		this.jButtonCancel.setActionCommand(ConstantController.DEFAULT_WINDOW_BACK);
+		this.jButtonCancel.addActionListener(controller);
+		this.add(jButtonCancel);
 	}
 
 	public String generateCaptcha() {
@@ -257,6 +257,8 @@ public class WindowRegister extends JDialog {
 		this.jLabelConfirmPassword.setText(handlerProperties.getProperty(ConstanstView.DEFAULT_LABEL_PASSWORD_CON));
 		this.jLabelDigitCaptha.setText(handlerProperties.getProperty(ConstanstView.DEFAULT_LABEL_CARACTER));
 		this.jLabelEmail.setText(handlerProperties.getProperty(ConstanstView.DEFAULT_LABEL_EMAIL));
+		this.jButtonRegister.setText(handlerProperties.getProperty(ConstanstView.DEFAULT_BUTTON_REGISTER));
+		this.jButtonCancel.setText(handlerProperties.getProperty(ConstanstView.DEFAULT_BUTTON_CANCEL));
 	}
 
 	public JTextField getTxNickName() {
@@ -372,19 +374,19 @@ public class WindowRegister extends JDialog {
 	}
 
 	public JButton getButtonRegister() {
-		return buttonRegister;
+		return jButtonRegister;
 	}
 
 	public void setButtonRegister(JButton buttonRegister) {
-		this.buttonRegister = buttonRegister;
+		this.jButtonRegister = buttonRegister;
 	}
 
 	public JButton getButtonCancel() {
-		return buttonCancel;
+		return jButtonCancel;
 	}
 
 	public void setButtonCancel(JButton buttonCancel) {
-		this.buttonCancel = buttonCancel;
+		this.jButtonCancel = buttonCancel;
 	}
 
 	public JLabel getLabelIcon() {
