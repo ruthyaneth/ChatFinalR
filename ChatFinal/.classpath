@@ -7,5 +7,7 @@
 	<classpathentry kind="lib" path="lib/substance-6.1.jar"/>
 	<classpathentry kind="lib" path="lib/trident-7.0.jar"/>
 	<classpathentry kind="src" path="Image"/>
+	<classpathentry kind="lib" path="C:/Users/parra/Downloads/base64-2.0.0.jar/base64-2.0.0.jar"/>
+	<classpathentry kind="lib" path="src/librerias/jespxml.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

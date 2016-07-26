@@ -11,6 +11,8 @@ import javax.swing.JMenuItem;
 
 import client.preferences.PreferencesFrame;
 import constant.ConstanstView;
+import constant.ConstantController;
+import contoller.Controller;
 
 /**
  * UNIVERSIDAD PEDAGOGICA Y TECNOLOGICA DE COLOMBIA
@@ -37,10 +39,12 @@ public class Menu  extends JMenuBar{
 	private JMenuItem itemAbout;
 	private JMenu menuHelp;
 	private JMenuItem itemHelp;
+	private Controller controller;
 
 	//------Builder--------
 
-	public Menu() {
+	public Menu(Controller controller) {
+		this.controller = controller;
 		init();
 	}
 
@@ -89,6 +93,10 @@ public class Menu  extends JMenuBar{
 		this.itemEnglish.setIcon(new ImageIcon(getClass().getResource(ConstanstView.IMAGE_ING)));
 		this.itemSpanish = new JMenuItem(ConstanstView.DEFAULT_SPANISH);
 		this.itemSpanish.setIcon(new ImageIcon(getClass().getResource(ConstanstView.IMAGE_ESPA)));
+		this.itemEnglish.addActionListener(controller);
+		this.itemEnglish.setActionCommand(ConstantController.A_ITEM_ENGLISH);
+		this.itemSpanish.addActionListener(controller);
+		this.itemSpanish.setActionCommand(ConstantController.A_ITEM_SPANISH);
 		this.add(menuLenguage);
 		this.menuLenguage.add(itemEnglish);
 		this.menuLenguage.add(itemSpanish);
