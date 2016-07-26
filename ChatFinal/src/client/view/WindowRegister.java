@@ -40,14 +40,14 @@ public class WindowRegister extends JDialog {
 	private JLabel jLabelNickname;
 	private JLabel jLabelPassword;
 	private JLabel jLabelConfirmPassword;
-	private JLabel labelCaracter;
+	private JLabel jLabelDigitCaptha;
 	private JTextField jTextFielReDigitCaptcha;
-	private JLabel lblCorreo;
+	private JLabel jLabelEmail;
 	private JTextField jTextFielEmail;
 	private JButton buttonRegister;
 	private JButton buttonCancel;
 	private JLabel labelIcon;
-	private JLabel labelCaptcha;
+	private JLabel jLabelCaptcha;
 	private Controller controller;
 	private JButton jButtonOkCaptcha;
 
@@ -89,11 +89,11 @@ public class WindowRegister extends JDialog {
 		this.jButtonOkCaptcha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String getTxt = jTextFielReDigitCaptcha.getText();
-				if (getTxt.equals(labelCaptcha.getText())) {
+				if (getTxt.equals(jLabelCaptcha.getText())) {
 					JOptionPane.showMessageDialog(null, "OK!! No Eres un Robot!!!!");
 				} else {
 					JOptionPane.showMessageDialog(null, "Error Captcha! Porfavor re-escriba el texto!.");
-					labelCaptcha.setText(generateCaptcha());
+					jLabelCaptcha.setText(generateCaptcha());
 				}
 			}
 		});
@@ -131,27 +131,27 @@ public class WindowRegister extends JDialog {
 		this.jLabelConfirmPassword.setBounds(28, 327, 172, 23);
 		this.add(jLabelConfirmPassword);
 
-		this.labelCaracter = new JLabel(ConstanstView.DEFAULT_LABEL_CARACTER);
-		this.labelCaracter.setHorizontalAlignment(SwingConstants.CENTER);
-		this.labelCaracter.setFont(new Font(ConstanstView.DEFAULT_FONT, Font.BOLD, 15));
-		this.labelCaracter.setBounds(46, 530, 132, 28);
-		this.add(labelCaracter);
+		this.jLabelDigitCaptha = new JLabel();
+		this.jLabelDigitCaptha.setHorizontalAlignment(SwingConstants.CENTER);
+		this.jLabelDigitCaptha.setFont(new Font(ConstanstView.DEFAULT_FONT, Font.BOLD, 15));
+		this.jLabelDigitCaptha.setBounds(46, 530, 132, 28);
+		this.add(jLabelDigitCaptha);
 
-		this.lblCorreo = new JLabel(ConstanstView.DEFAULT_LABEL_EMAIL);
-		this.lblCorreo.setFont(new Font(ConstanstView.DEFAULT_FONT, Font.BOLD, 15));
-		this.lblCorreo.setBounds(32, 367, 168, 21);
-		this.add(lblCorreo);
+		this.jLabelEmail = new JLabel();
+		this.jLabelEmail.setFont(new Font(ConstanstView.DEFAULT_FONT, Font.BOLD, 15));
+		this.jLabelEmail.setBounds(32, 367, 168, 21);
+		this.add(jLabelEmail);
 
 		this.labelIcon = new JLabel("");
 		this.labelIcon.setIcon(new ImageIcon(ConstanstView.DEFAULT_WINDOWR_ICON));
 		this.labelIcon.setBounds(184, 11, 150, 156);
 		this.add(labelIcon);
 
-		this.labelCaptcha = new JLabel(generateCaptcha());
-		this.labelCaptcha.setBorder(BorderFactory.createLineBorder(Color.BLUE, 7));
-		this.labelCaptcha.setBorder(BorderFactory.createTitledBorder("Captcha"));
-		this.labelCaptcha.setBounds(57, 387, 132, 149);
-		this.add(labelCaptcha);
+		this.jLabelCaptcha = new JLabel(generateCaptcha());
+		this.jLabelCaptcha.setBorder(BorderFactory.createLineBorder(Color.BLUE, 7));
+		this.jLabelCaptcha.setBorder(BorderFactory.createTitledBorder("Captcha"));
+		this.jLabelCaptcha.setBounds(57, 387, 132, 149);
+		this.add(jLabelCaptcha);
 	}
 
 	public void initTx() {
@@ -255,7 +255,8 @@ public class WindowRegister extends JDialog {
 		this.jLabelNickname.setText(handlerProperties.getProperty(ConstanstView.DEFAULT_LABEL_NOCKNAME));
 		this.jLabelPassword.setText(handlerProperties.getProperty(ConstanstView.DEFAULT_LABEL_PASSWORD));
 		this.jLabelConfirmPassword.setText(handlerProperties.getProperty(ConstanstView.DEFAULT_LABEL_PASSWORD_CON));
-		// comprobando
+		this.jLabelDigitCaptha.setText(handlerProperties.getProperty(ConstanstView.DEFAULT_LABEL_CARACTER));
+		this.jLabelEmail.setText(handlerProperties.getProperty(ConstanstView.DEFAULT_LABEL_EMAIL));
 	}
 
 	public JTextField getTxNickName() {
@@ -339,11 +340,11 @@ public class WindowRegister extends JDialog {
 	}
 
 	public JLabel getLabelCaracter() {
-		return labelCaracter;
+		return jLabelDigitCaptha;
 	}
 
 	public void setLabelCaracter(JLabel labelCaracter) {
-		this.labelCaracter = labelCaracter;
+		this.jLabelDigitCaptha = labelCaracter;
 	}
 
 	public JTextField getTextField() {
@@ -355,11 +356,11 @@ public class WindowRegister extends JDialog {
 	}
 
 	public JLabel getLblCorreo() {
-		return lblCorreo;
+		return jLabelEmail;
 	}
 
 	public void setLblCorreo(JLabel lblCorreo) {
-		this.lblCorreo = lblCorreo;
+		this.jLabelEmail = lblCorreo;
 	}
 
 	public JTextField getTextField_1() {
@@ -395,10 +396,10 @@ public class WindowRegister extends JDialog {
 	}
 
 	public JLabel getLabelLetter() {
-		return labelCaptcha;
+		return jLabelCaptcha;
 	}
 
 	public void setLabelLetter(JLabel labelLetter) {
-		this.labelCaptcha = labelLetter;
+		this.jLabelCaptcha = labelLetter;
 	}
 }

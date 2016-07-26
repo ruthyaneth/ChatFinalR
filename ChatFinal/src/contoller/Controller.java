@@ -10,7 +10,7 @@ import client.view.WindowClient;
 import client.view.WindowLogin;
 import config.HandlerLanguage;
 import constant.ConstantController;
-import persistence.XmlCliente;
+import persistence.XmlUser;
 
 /**
  * UNIVERSIDAD PEDAGOGICA Y TECNOLOGICA DE COLOMBIA
@@ -132,7 +132,8 @@ public class Controller implements ActionListener{
 		if (cliente != null){
 			managerUser.addUser(cliente);
 //			ventanaPrincipal.agregarCliente(cliente);
-			XmlCliente.EscribirXML(managerUser.getListUser(), RUTA_CLIENTE);
+			
+			XmlUser.EscribirXML(managerUser.getListUser(), RUTA_CLIENTE);
 		}
 	}
 }

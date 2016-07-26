@@ -31,10 +31,10 @@ public class ConstanstView {
 	public final static String DEFAULT_LABEL_NAME = "DEFAULT_LABEL_NAME";
 	public final static String DEFAULT_LABEL_USERNAME = "DEFAULT_LABEL_USERNAME";
 	public final static String DEFAULT_LABEL_NOCKNAME = "DEFAULT_LABEL_NOCKNAME";
-	public final static String DEFAULT_LABEL_EMAIL = "Correo Electronico";
+	public final static String DEFAULT_LABEL_EMAIL = "DEFAULT_LABEL_EMAIL";
 	public final static String DEFAULT_LABEL_PASSWORD = "DEFAULT_LABEL_PASSWORD";
 	public final static String DEFAULT_LABEL_PASSWORD_CON = "CDEFAULT_LABEL_PASSWORD_CON";
-	public final static String DEFAULT_LABEL_CARACTER = "Caracteres";
+	public final static String DEFAULT_LABEL_CARACTER = "DEFAULT_LABEL_CARACTER";
 	public final static String DEFAULT_BUTTON_REGISTER ="Registrar";
 	public final static String DEFAULT_BUTTON_CANCEL = "Cancelar";
 	public final static int DEFAULT_SIZ_H = 650;
